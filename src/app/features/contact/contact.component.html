@@ -1,0 +1,53 @@
+<section id="contact" class="section contact">
+  <div class="container">
+    <div class="contact__panel" appScrollReveal="scale">
+      <div class="contact__bg" aria-hidden="true"></div>
+
+      <div class="contact__content">
+        <span class="section__eyebrow">Let's connect</span>
+        <h2 class="contact__title">
+          Ready to build something <span class="gradient-text">exceptional</span>?
+        </h2>
+        <p class="contact__lead">
+          Whether you're scaling a platform, modernizing legacy systems, or exploring AI-assisted engineering —
+          I'd love to talk. Reach out through any channel below.
+        </p>
+
+        <!-- Contact channels -->
+        <div class="contact__grid">
+          @for (link of links; track link.label) {
+            <a
+              class="contact__card"
+              [href]="link.href"
+              [attr.target]="link.external ? '_blank' : null"
+              [attr.rel]="link.external ? 'noopener noreferrer' : null"
+            >
+              <span class="contact__icon"><app-icon [name]="iconOf(link.icon)" [size]="22" /></span>
+              <span class="contact__text">
+                <span class="contact__label">{{ link.label }}</span>
+                <span class="contact__value">{{ link.value }}</span>
+              </span>
+              @if (link.external) {
+                <span class="contact__ext"><app-icon name="external" [size]="16" /></span>
+              }
+            </a>
+          }
+        </div>
+
+        <!-- Primary CTAs -->
+        <div class="contact__cta">
+          <a class="btn btn--primary" [href]="'mailto:' + profile.email">
+            <app-icon name="mail" [size]="18" /> Email Me
+          </a>
+          <a
+            class="btn btn--ghost"
+            [href]="profile.resumeFile"
+            [attr.download]="'Manikandan_Kumaresan_Resume.pdf'"
+          >
+            <app-icon name="download" [size]="18" /> Download Résumé
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

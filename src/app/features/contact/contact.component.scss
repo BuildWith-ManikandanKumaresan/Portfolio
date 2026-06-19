@@ -1,0 +1,130 @@
+.contact__panel {
+  position: relative;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  overflow: hidden;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.contact__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--primary) 22%, transparent), transparent 45%),
+    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 45%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.contact__content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contact__title {
+  font-size: clamp(1.7rem, 4.5vw, 2.7rem);
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0.6rem 0 1rem;
+}
+
+.contact__lead {
+  color: var(--text-muted);
+  max-width: 56ch;
+  margin: 0 auto 2.4rem;
+}
+
+/* ---------- Channel grid ---------- */
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 2.2rem;
+  text-align: left;
+}
+
+.contact__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition:
+    transform var(--t),
+    background var(--t),
+    border-color var(--t),
+    box-shadow var(--t);
+}
+
+.contact__card:hover {
+  transform: translateY(-4px);
+  background: var(--surface-hover);
+  border-color: var(--primary);
+  box-shadow: var(--glow);
+}
+
+.contact__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: var(--grad);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.contact__label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.contact__value {
+  font-weight: 600;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact__ext {
+  margin-left: auto;
+  color: var(--text-faint);
+  transition: color var(--t-fast);
+}
+
+.contact__card:hover .contact__ext {
+  color: var(--primary-strong);
+}
+
+/* ---------- CTAs ---------- */
+.contact__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+@media (max-width: 560px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}

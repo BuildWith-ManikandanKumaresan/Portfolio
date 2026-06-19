@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const p = require\\('./node_modules/@angular-devkit/build-angular/package.json'\\); console.log\\('build-angular:', p.version\\)\")",
+      "Bash(node -e \"const p = require\\('./node_modules/@angular/core/package.json'\\); console.log\\('core:', p.version\\)\")",
+      "Bash(node -e \"const p = require\\('./node_modules/@angular/cli/package.json'\\); console.log\\('cli:', p.version\\)\")",
+      "Bash(node -e \"const p = require\\('./node_modules/firebase/package.json'\\); console.log\\('firebase:', p.version\\)\")",
+      "Bash(node -e \"['@angular/animations','@angular/platform-browser-dynamic'].forEach\\(p => { try { console.log\\(p+':', require\\('./node_modules/'+p+'/package.json'\\).version\\) } catch\\(e\\) { console.log\\(p+': NOT FOUND'\\) }}\\)\")",
+      "Bash(npx ng *)",
+      "Bash(npm install *)"
+    ]
+  }
+}

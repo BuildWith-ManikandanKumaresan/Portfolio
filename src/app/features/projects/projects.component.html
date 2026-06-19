@@ -1,0 +1,63 @@
+<section id="projects" class="section projects">
+  <div class="container">
+    <header class="section__head" appScrollReveal>
+      <span class="section__eyebrow">Selected work</span>
+      <h2 class="section__title">Portfolio &amp; <span class="gradient-text">Projects</span></h2>
+      <p class="section__subtitle">
+        A space for my personal and open-source work.
+      </p>
+    </header>
+
+    @if (projects.length > 0) {
+      <div class="projects__grid">
+        @for (p of projects; track p.title; let i = $index) {
+          <article
+            class="pcard"
+            [attr.data-accent]="p.accent"
+            appScrollReveal="scale"
+            [revealDelay]="(i % 3) * 90"
+          >
+            <div class="pcard__glow" aria-hidden="true"></div>
+
+            <header class="pcard__top">
+              <span class="pcard__company">{{ p.company }}</span>
+              @if (p.metric) {
+                <div class="pcard__metric">
+                  <span class="pcard__metric-value">{{ p.metric.value }}</span>
+                  <span class="pcard__metric-label">{{ p.metric.label }}</span>
+                </div>
+              }
+            </header>
+
+            <h3 class="pcard__title">{{ p.title }}</h3>
+            <p class="pcard__desc">{{ p.description }}</p>
+
+            <ul class="pcard__tags">
+              @for (t of p.tags; track t) {
+                <li>{{ t }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    } @else {
+      <!-- Empty state — projects to be added with GitHub links in the future -->
+      <div class="empty" appScrollReveal="scale">
+        <span class="empty__icon">🚧</span>
+        <h3 class="empty__title">Projects</h3>
+        <!-- <p class="empty__text">
+          I'm currently curating a set of personal and open-source projects to showcase here.
+          Check back soon — or explore my work-in-progress on GitHub.
+        </p> -->
+        <a
+          class="btn btn--primary"
+          [href]="github"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <app-icon name="github" [size]="18" /> Visit my GitHub
+        </a>
+      </div>
+    }
+  </div>
+</section>

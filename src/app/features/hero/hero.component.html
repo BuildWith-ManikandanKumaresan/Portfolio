@@ -1,0 +1,51 @@
+<section id="home" class="hero">
+  <!-- Decorative animated background blobs -->
+  <div class="hero__bg" aria-hidden="true">
+    <span class="blob blob--1"></span>
+    <span class="blob blob--2"></span>
+    <span class="blob blob--3"></span>
+    <span class="grid"></span>
+  </div>
+
+  <div class="container hero__inner">
+    <p class="hero__greeting fade-in fade-in--1">
+      <app-icon name="sparkle" [size]="18" />
+      Hello, I'm
+    </p>
+
+    <h1 class="hero__name fade-in fade-in--2">
+      {{ profile.name }}
+    </h1>
+
+    <h2 class="hero__role fade-in fade-in--3">
+      <span class="gradient-text">{{ typed() }}</span><span class="cursor" aria-hidden="true">|</span>
+    </h2>
+
+    <p class="hero__summary fade-in fade-in--4">
+      {{ profile.summary }}
+    </p>
+
+    <div class="hero__meta fade-in fade-in--5">
+      <span class="hero__chip"><app-icon name="location" [size]="16" /> {{ profile.location }}</span>
+      <span class="hero__chip hero__chip--open">
+        <span class="pulse"></span> Open to opportunities
+      </span>
+    </div>
+
+    <div class="hero__cta fade-in fade-in--6">
+      <a class="btn btn--primary" [href]="profile.resumeFile" [attr.download]="'Manikandan_Kumaresan_Resume.pdf'">
+        <app-icon name="download" [size]="18" /> Download Résumé
+      </a>
+      <button class="btn btn--ghost" type="button" (click)="scrollTo('projects')">
+        View Projects <app-icon name="arrow-right" [size]="18" />
+      </button>
+      <button class="btn btn--ghost" type="button" (click)="scrollTo('contact')">
+        <app-icon name="mail" [size]="18" /> Get in Touch
+      </button>
+    </div>
+  </div>
+
+  <button class="hero__scroll" type="button" (click)="scrollTo('skills')" aria-label="Scroll to content">
+    <app-icon name="chevron" [size]="26" />
+  </button>
+</section>

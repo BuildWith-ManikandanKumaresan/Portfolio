@@ -1,0 +1,91 @@
+<section id="experience" class="section experience">
+  <div class="container">
+    <header class="section__head" appScrollReveal>
+      <span class="section__eyebrow">Career journey</span>
+      <h2 class="section__title">Professional <span class="gradient-text">Experience</span></h2>
+      <p class="section__subtitle">
+        11+ years building mission-critical platforms. Tap any role to expand the highlights.
+      </p>
+    </header>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      @for (job of experience; track job.company; let i = $index) {
+        <article class="tl" appScrollReveal="left" [revealDelay]="i * 90">
+          <span class="tl__dot" [class.tl__dot--current]="job.current"></span>
+
+          <div class="tl__card">
+            <button
+              class="tl__head"
+              type="button"
+              [attr.aria-expanded]="isOpen(i)"
+              [attr.aria-controls]="'tl-body-' + i"
+              (click)="toggle(i)"
+            >
+              <div class="tl__headmain">
+                <div class="tl__titlerow">
+                  <h3 class="tl__role">{{ job.title }}</h3>
+                  @if (job.current) {
+                    <span class="tl__badge">Current</span>
+                  }
+                </div>
+                <p class="tl__company">{{ job.company }}</p>
+                <p class="tl__metarow">
+                  <span><app-icon name="location" [size]="14" /> {{ job.location }}</span>
+                  <span class="tl__period">{{ job.period }}</span>
+                </p>
+              </div>
+              <span class="tl__chev" [class.tl__chev--open]="isOpen(i)">
+                <app-icon name="chevron" [size]="22" />
+              </span>
+            </button>
+
+            <!-- Products -->
+            <ul class="tl__products">
+              @for (p of job.products; track p) {
+                <li>{{ p }}</li>
+              }
+            </ul>
+
+            <!-- Expandable highlights -->
+            <div class="tl__body" [id]="'tl-body-' + i" [@expand]="isOpen(i) ? 'expanded' : 'collapsed'">
+              <ul class="tl__highlights">
+                @for (h of job.highlights; track h) {
+                  <li>
+                    <span class="tl__bullet"><app-icon name="arrow-right" [size]="14" /></span>
+                    {{ h }}
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- Education & Certifications -->
+    <div class="extras">
+      <div class="extras__col" appScrollReveal="left">
+        <h3 class="extras__title">🎓 Education</h3>
+        @for (ed of education; track ed.degree) {
+          <div class="extras__item">
+            <p class="extras__primary">{{ ed.degree }}</p>
+            <p class="extras__secondary">{{ ed.institution }}</p>
+            <span class="extras__period">{{ ed.period }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="extras__col" appScrollReveal="right">
+        <h3 class="extras__title">📜 Certifications</h3>
+        @for (cert of certifications; track cert.title) {
+          <div class="extras__item">
+            <p class="extras__primary">{{ cert.title }}</p>
+            <p class="extras__secondary">{{ cert.issuer }}</p>
+            <span class="extras__period">{{ cert.year }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

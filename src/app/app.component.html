@@ -1,0 +1,29 @@
+<!-- Boot loader (fades out after first paint) -->
+<app-loading-spinner [leaving]="!booting()" label="Manikandan Kumaresan" />
+
+<!-- Reading-progress bar -->
+<div class="progress" aria-hidden="true">
+  <span class="progress__fill" [style.width.%]="progress()"></span>
+</div>
+
+<app-header />
+
+<main id="main">
+  <app-hero />
+  <app-skills />
+  <app-experience />
+  <app-projects />
+  <app-contact />
+</main>
+
+<!-- Back to top -->
+<button
+  class="totop"
+  type="button"
+  [class.totop--show]="showTop()"
+  (click)="scrollToTop()"
+  aria-label="Back to top"
+  title="Back to top"
+>
+  <app-icon name="arrow-up" [size]="22" />
+</button>

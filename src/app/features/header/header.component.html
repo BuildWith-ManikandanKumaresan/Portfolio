@@ -1,0 +1,67 @@
+<header class="hdr" [ngClass]="{ 'hdr--scrolled': scrolled() }">
+  <div class="container hdr__inner">
+    <!-- Brand -->
+    <a href="#home" class="brand" (click)="onNavClick($event, 'home')" aria-label="Go to top">
+      <span class="brand__mark">{{ initials }}</span>
+      <span class="brand__name">Manikandan<span class="brand__dot">.</span></span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        @for (item of navItems; track item.id) {
+          <li>
+            <a
+              class="nav__link"
+              [class.is-active]="active() === item.id"
+              [attr.aria-current]="active() === item.id ? 'page' : null"
+              [href]="'#' + item.id"
+              (click)="onNavClick($event, item.id)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Actions -->
+    <div class="hdr__actions">
+      <app-theme-toggle />
+      <button
+        class="hdr__burger"
+        type="button"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Toggle navigation menu"
+        (click)="toggleMenu()"
+      >
+        <app-icon [name]="menuOpen() ? 'close' : 'menu'" [size]="24" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" [ngClass]="{ 'drawer--open': menuOpen() }">
+    <nav aria-label="Mobile">
+      <ul class="drawer__list">
+        @for (item of navItems; track item.id) {
+          <li>
+            <a
+              class="drawer__link"
+              [class.is-active]="active() === item.id"
+              [href]="'#' + item.id"
+              (click)="onNavClick($event, item.id)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Backdrop closes the drawer when tapped -->
+@if (menuOpen()) {
+  <div class="drawer__backdrop" (click)="closeMenu()" aria-hidden="true"></div>
+}

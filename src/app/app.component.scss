@@ -1,0 +1,64 @@
+:host {
+  display: block;
+}
+
+/* ---------- Reading-progress bar ---------- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 101;
+  background: transparent;
+  pointer-events: none;
+}
+
+.progress__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--grad);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 60%, transparent);
+  transition: width 0.1s linear;
+}
+
+main {
+  display: block;
+}
+
+/* ---------- Back-to-top ---------- */
+.totop {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--grad);
+  border: none;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.85);
+  transition:
+    opacity var(--t),
+    visibility var(--t),
+    transform var(--t),
+    box-shadow var(--t);
+}
+
+.totop--show {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.totop:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--glow);
+}

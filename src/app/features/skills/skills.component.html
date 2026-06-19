@@ -1,0 +1,43 @@
+<section id="skills" class="section skills">
+  <div class="container">
+    <header class="section__head" appScrollReveal>
+      <span class="section__eyebrow">What I bring</span>
+      <h2 class="section__title">Core Competencies &amp; <span class="gradient-text">Skills</span></h2>
+      <p class="section__subtitle">
+        A decade of depth across architecture, distributed systems, and the .NET ecosystem — now augmented with
+        Generative-AI tooling.
+      </p>
+    </header>
+  </div>
+
+  <!-- Auto-scrolling competency marquee (pauses on hover) -->
+  <div class="marquee" appScrollReveal aria-label="Core competencies">
+    <div class="marquee__track">
+      @for (c of marquee; track $index) {
+        <span class="chip" [attr.aria-hidden]="$index >= competencies.length ? 'true' : null">
+          <span class="chip__icon">{{ c.icon }}</span>
+          {{ c.label }}
+        </span>
+      }
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Categorized technical skills -->
+    <div class="skills__grid">
+      @for (group of skillGroups; track group.category) {
+        <article class="skillcard" appScrollReveal="scale" [revealDelay]="$index * 70">
+          <div class="skillcard__head">
+            <span class="skillcard__icon">{{ group.icon }}</span>
+            <h3 class="skillcard__title">{{ group.category }}</h3>
+          </div>
+          <ul class="skillcard__tags">
+            @for (skill of group.skills; track skill) {
+              <li class="tag">{{ skill }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>
